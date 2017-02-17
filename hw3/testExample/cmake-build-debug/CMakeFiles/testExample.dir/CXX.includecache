@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Testing/UtilsTester.cpp
+UtilsTester.h
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Testing/UtilsTester.h
+../Utils.h
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Utils.h
+iostream
+-
+
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Testing/UtilsTester.h
+
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Utils.cpp
+cmath
+-
+
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Utils.h
+
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/main.cpp
+iostream
+-
+cmath
+-
+Utils.h
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Utils.h
+Testing/UtilsTester.h
+/Users/swc/Dropbox/UnderGit/cs1440s17-shared/testExample/Testing/UtilsTester.h
+
