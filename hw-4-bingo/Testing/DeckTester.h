@@ -6,11 +6,13 @@
 #define BINGO_DECKTESTER_H
 
 
-
 class DeckTester {
-
+public:
+    void testDeckConstructor();
+    
+private:
+    
 };
-
 
 
 #endif //BINGO_DECKTESTER_H
