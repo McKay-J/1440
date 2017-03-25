@@ -446,12 +446,137 @@ void RegionTester::testSubRegions()
 {
     std::cout << "RegionTester::testSubRegions" << std::endl;
 
-    // TODO: Add test cases for managing sub-regions
+    {
+        std::string inputFile = "SampleData/sampleData-4.txt";
+        std::ifstream inputStream(inputFile);
+        Region* world = Region::create(inputStream);
+
+        Region* subregion = world->findRegionid(16);
+        if (subregion->getId() != 16)
+        {
+            std::cout << "Failed to get the correct region by id\n";
+            std::cout << "\tExpected 25, but got \"" << subregion->getId() << "\"\n";
+            return;
+        }
+
+        std::string inputString = "Tiny Country,30,20";
+        Region *region = Region::create(Region::NationType,inputString);
+        world->addRegion(region);
+        if (world->findRegionid(region->getId()) != region)
+        {
+            std::cout << "Failed to add new region from " << inputString << std::endl;
+            std::cout << "\tExpected region 28, but got \"" << region->getId() << "\"\n";
+            return;
+        }
+
+        if (world->getSubRegionCount() != 4)
+        {
+            std::cout << "Failed to get the correct sub-region count from\n" << inputFile << std::endl;
+            std::cout << "\tExpected 4, but got \"" << world->getSubRegionCount() << "\"\n";
+            return;
+        }
+    }
 }
 
 void RegionTester::testComputeTotalPopulation()
 {
     std::cout << "RegionTester::testComputeTotalPopulation" << std::endl;
 
-    // TODO: Add test cases for computeTotalPopulation
+    {
+        std::string inputFile = "SampleData/sampleData-4.txt";
+        std::ifstream inputStream(inputFile);
+        Region* world = Region::create(inputStream);
+
+        if (world->computeTotalPopulation(0) != 4059243)
+        {
+            std::cout << "Failed to compute total population from " << inputFile << std::endl;
+            std::cout << "\tExpected 4059243 but got \"" << world->computeTotalPopulation(0) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputFile = "SampleData/sampleData-3.txt";
+        std::ifstream inputStream(inputFile);
+        Region* world = Region::create(inputStream);
+
+
+
+        if (world->computeTotalPopulation(7324782225) != 7856306962)
+        {
+            std::cout << "Failed to compute total population from " << inputFile << std::endl;
+            std::cout << "\tExpected 7856306962 but got \"" << world->computeTotalPopulation(7324782225) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputFile = "SampleData/sampleData-2.txt";
+        std::ifstream inputStream(inputFile);
+        Region* world = Region::create(inputStream);
+
+
+
+        if (world->computeTotalPopulation(7324782225) != 7809382530)
+        {
+            std::cout << "Failed to compute total population from " << inputFile << std::endl;
+            std::cout << "\tExpected 7809382530 but got \"" << world->computeTotalPopulation(7324782225) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputFile = "SampleData/sampleData-1.txt";
+        std::ifstream inputStream(inputFile);
+        Region* world = Region::create(inputStream);
+
+
+
+        if (world->computeTotalPopulation(7324782225) != 7324782225)
+        {
+            std::cout << "Failed to compute total population from " << inputFile << std::endl;
+            std::cout << "\tExpected 7324782225 but got \"" << world->computeTotalPopulation(7324782225) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputString = "Tiny Country,30,20";
+        Region *region = Region::create(Region::NationType,inputString);
+        if (region->computeTotalPopulation(30) != 30) {
+            std::cout << "Failed to compute total population from " << region << std::endl;
+            std::cout << "\tExpected 30 but got \"" << region->computeTotalPopulation(30) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputString = "Tiny State,50,20";
+        Region *region = Region::create(Region::StateType,inputString);
+        if (region->computeTotalPopulation(50) != 50) {
+            std::cout << "Failed to compute total population from " << region << std::endl;
+            std::cout << "\tExpected 50 but got \"" << region->computeTotalPopulation(50) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputString = "Tiny County,100,20";
+        Region *region = Region::create(Region::CountyType,inputString);
+        if (region->computeTotalPopulation(100) != 100) {
+            std::cout << "Failed to compute total population from " << region << std::endl;
+            std::cout << "\tExpected 100 but got \"" << region->computeTotalPopulation(100) << "\"\n";
+            return;
+        }
+    }
+
+    {
+        std::string inputString = "Tiny City,1000,20";
+        Region *region = Region::create(Region::CityType,inputString);
+        if (region->computeTotalPopulation(1000) != 1000) {
+            std::cout << "Failed to compute total population from " << region << std::endl;
+            std::cout << "\tExpected 1000 but got \"" << region->computeTotalPopulation(1000) << "\"\n";
+            return;
+        }
+    }
 }

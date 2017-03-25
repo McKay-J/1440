@@ -5,7 +5,7 @@
 #include <iostream>
 #include "UtilsTester.h"
 #include "RegionTester.h"
-#include "WorldTester.h"
+
 
 int main() {
 
@@ -27,7 +27,5 @@ int main() {
     regionTester.testGettersAndSetters();
     regionTester.testSubRegions();
     regionTester.testComputeTotalPopulation();
-    regionTester.testList();
-    regionTester.testDisplay();
-    regionTester.testSave();
+
 }

@@ -15,7 +15,7 @@ protected:
     unsigned int    m_id = 0;
     RegionType      m_regionType = UnknownRegionType;
     std::string     m_name;
-    unsigned int    m_population = 0;
+    unsigned long long int    m_population = 0;
     double          m_area = 0;
     bool            m_isValid = false;
     int m_regionCount = 0;
@@ -33,6 +33,7 @@ public:
     static Region* create(const std::string& data);
     static Region* create(RegionType regionType, const std::string& data);
     static std::string regionLabel(RegionType regionType);
+    void addRegion(Region*);
 
 protected:
     Region();
@@ -55,7 +56,7 @@ public:
     // TODO: Add methods to manage sub-regions
 
     // TODO: Add method to compute total population, as m_population + the total population for all sub-regions
-    unsigned int computeTotalPopulation(unsigned int pop);
+    unsigned long long int computeTotalPopulation(unsigned long long int pop);
 
     void list(std::ostream& out);
     void display(std::ostream& out, unsigned int displayLevel, bool showChild);
@@ -71,7 +72,7 @@ protected:
     virtual void validate();
     void loadChildren(std::istream& in);
     static unsigned int getNextId();
-    void addRegion(Region*);
+
     void grow();
 
     // TODO: add whatever other helper methods you might need

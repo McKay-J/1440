@@ -145,10 +145,10 @@ std::string Region::getRegionLabel() const
     return regionLabel(getType());
 }
 
-unsigned int Region::computeTotalPopulation(unsigned int pop)
+unsigned long long int Region::computeTotalPopulation(unsigned long long int pop)
 {
 
-    unsigned int population = pop;
+    unsigned long long int population = pop;
 
     for(int i = 0; i<m_regionCount; ++i)
     {
