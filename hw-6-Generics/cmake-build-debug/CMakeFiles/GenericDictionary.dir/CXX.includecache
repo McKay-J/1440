@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/McMac/Documents/git/1440/1440/GenericDictionary final/Dictionary.h
+iostream
+-
+KeyValue.h
+/Users/McMac/Documents/git/1440/1440/GenericDictionary final/KeyValue.h
+
+/Users/McMac/Documents/git/1440/1440/GenericDictionary final/KeyValue.h
+
+/Users/McMac/Documents/git/1440/1440/GenericDictionary final/main.cpp
+iostream
+-
+string
+-
+Dictionary.h
+/Users/McMac/Documents/git/1440/1440/GenericDictionary final/Dictionary.h
+
