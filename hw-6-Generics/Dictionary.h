@@ -43,7 +43,7 @@ private:
 template <typename KeyType, typename ValueType>
 Dictionary<KeyType, ValueType>::Dictionary()
 {
-    constructDict(10);
+    constructDict(10);  // He asked us to make it size 10
 }
 
 
@@ -63,7 +63,7 @@ Dictionary<KeyType, ValueType>::~Dictionary()
 template <typename KeyType, typename ValueType>
 Dictionary<KeyType, ValueType>::Dictionary(int size)
 {
-    constructDict(size);
+    constructDict(size);  //We could have just put 10 like up above, but this allows user to
 }
 
 
@@ -71,23 +71,25 @@ Dictionary<KeyType, ValueType>::Dictionary(int size)
 template <typename KeyType, typename ValueType>
 void Dictionary<KeyType, ValueType>::constructDict(int size)
 {
-    m_elements = new KeyValue<KeyType, ValueType>*[size];
+    m_elements = new KeyValue<KeyType, ValueType>*[size];  //Pointer to a new KeyValue Type. KeyType = song ... ValueType = Artist
     m_allocated = size;
     for (int i = 0; i < size; i++)
     {
-        m_elements[i] = nullptr;
+        m_elements[i] = nullptr;  // Set to Nullptr to not get garbage
     }
 }
 
+// ELEMENTS ARE POINTERS that point to KEYVALUE TYPES
+// M_INDEX IS THE AMOUNT OF BOXES THAT WE HAVE
 
 
 template <typename KeyType, typename ValueType>
-Dictionary<KeyType, ValueType>::Dictionary(const Dictionary &obj)
+Dictionary<KeyType, ValueType>::Dictionary(const Dictionary &obj)  //Copy Constructor
 {
     constructDict(obj.m_allocated);
     for (int i = 0; i < m_allocated; i++)
     {
-        if (obj.m_elements[i] != nullptr)
+        if (obj.m_elements[i] != nullptr)  //We do this because we don't want to get screwed up if orginal was deleted
             m_elements[i] = new KeyValue<KeyType, ValueType>(obj.m_elements[i]->getKey(), obj.m_elements[i]->getValue());
         else
             m_elements[i] = nullptr;
@@ -97,7 +99,7 @@ Dictionary<KeyType, ValueType>::Dictionary(const Dictionary &obj)
 
 
 
-template <typename KeyType, typename ValueType>
+template <typename KeyType, typename ValueType>   //From Cyde's Farm. Doubles in size
 void Dictionary<KeyType, ValueType>::grow()
 {
     KeyValue<KeyType, ValueType>** temp = new KeyValue<KeyType, ValueType>*[m_allocated*2];
@@ -115,7 +117,7 @@ void Dictionary<KeyType, ValueType>::grow()
 
 
 template <typename KeyType, typename ValueType>
-void Dictionary<KeyType, ValueType>::add(KeyType key, ValueType value)
+void Dictionary<KeyType, ValueType>::add(KeyType key, ValueType value)  //from clyde
 {
 
     bool keyIsUnique = true;
@@ -123,7 +125,7 @@ void Dictionary<KeyType, ValueType>::add(KeyType key, ValueType value)
     for(unsigned int i = 0; i < m_index; i++)
     {
 
-        if(m_elements[i]->getKey() == key)
+        if(m_elements[i]->getKey() == key)  //We dont want to make a copy of one that already exists
         {
             keyIsUnique = false;
             break;
@@ -137,7 +139,7 @@ void Dictionary<KeyType, ValueType>::add(KeyType key, ValueType value)
             grow();
         }
         m_elements[m_index] = new KeyValue<KeyType, ValueType>(key, value);
-        m_index++;
+        m_index++;  //Will add another box
     }
     else
     {
@@ -180,7 +182,7 @@ void Dictionary<KeyType, ValueType>::removeByIndex(int index)
 {
     if (index < m_index)
     {
-        reindex(index);
+        reindex(index);   //Fills in the gap
         return;
     }
 
@@ -205,10 +207,10 @@ void Dictionary<KeyType, ValueType>::removeByKey(KeyType key)
 
 //todo: possible bug????????
 template <typename KeyType, typename ValueType>
-void Dictionary<KeyType, ValueType>::reindex(int index)
+void Dictionary<KeyType, ValueType>::reindex(int index) //Fills in the Gap
 {
-    bool reachedHole = false;
-    KeyValue<KeyType, ValueType>** temp = new KeyValue<KeyType, ValueType>*[m_allocated];
+    bool reachedHole = false;  //Will kick us out once we find the hole
+    KeyValue<KeyType, ValueType>** temp = new KeyValue<KeyType, ValueType>*[m_allocated]; //Make a new one from the old one
 
     for (int k = 0; k < m_allocated; ++k)
     {
@@ -231,7 +233,7 @@ void Dictionary<KeyType, ValueType>::reindex(int index)
 
         if(reachedHole)
         {
-            m_elements[i - 1] = temp[i];
+            m_elements[i - 1] = temp[i];  //Shifts to fill the hole
         }
         else
         {

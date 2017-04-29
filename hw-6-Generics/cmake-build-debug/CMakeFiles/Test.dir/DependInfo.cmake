@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/McMac/Documents/git/1440/1440/GenericDictionary final/TestCases/TestMain.cpp" "/Users/McMac/Documents/git/1440/1440/GenericDictionary final/cmake-build-debug/CMakeFiles/Test.dir/TestCases/TestMain.cpp.o"
+  "/Users/McMac/Documents/git/1440/1440/hw-6-Generics/TestCases/TestMain.cpp" "/Users/McMac/Documents/git/1440/1440/hw-6-Generics/cmake-build-debug/CMakeFiles/Test.dir/TestCases/TestMain.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
